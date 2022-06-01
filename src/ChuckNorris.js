@@ -1,28 +1,49 @@
 import React from 'react';
 
 export class ChuckNorris extends React.Component {
+
+    state = {
+        data: {
+            categories: [],
+            created_at: "",
+            icon_url: "",
+            id: "",
+            updated_at: "",
+            url: "",
+            value: ""
+          },
+    }
+
+
     constructor(props) {
         super(props);
 
-        this.state = {
-            totalReactPackages: null
-        };
+        this.getData = this.getData.bind(this);
+
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         // Simple GET request using fetch
-        fetch('https://api.chucknorris.io/jokes/random')
-            .then(response => response.json())
-            .then(data => this.setState({ totalReactPackages: data.total }));
+        const response = await fetch("https://api.chucknorris.io/jokes/random");
+        const data = await response.json();
+        this.getData(data);
+    }
+
+    getData(dataAPI) {
+    //    let data = dataAPI;
+        this.setState({
+             data: dataAPI
+        });
+
     }
 
     render() {
-        const { totalReactPackages } = this.state;
+    
         return (
             <div className="card text-center m-3">
                 <h5 className="card-header">Simple GET Request</h5>
                 <div className="card-body">
-                    Total react packages: {totalReactPackages}
+                    Data: {this.state.data.url}
                 </div>
             </div>
         );
