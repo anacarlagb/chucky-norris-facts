@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ChuckNorris extends React.Component {
+export class ChuckNorris extends React.Component {
     constructor(props) {
         super(props);
 
@@ -29,4 +29,4 @@ class ChuckNorris extends React.Component {
     }
 }
 
-export { GetRequest }; 
+
