@@ -25,11 +25,12 @@ export class ChuckNorris extends React.Component {
 
     }
 
-    async componentDidMount() {
+    async getSearch(value) {
         // Simple GET request using fetch
-        const response = await fetch("https://api.chucknorris.io/jokes/random");
-        const data = await response.json();
-        this.getData(data);
+       const searchValue  = value; 
+       const response = await fetch("https://api.chucknorris.io/jokes/random");
+       const data = await response.json();
+       this.getData(data);
     }
 
     getData(dataAPI) {
@@ -47,7 +48,8 @@ export class ChuckNorris extends React.Component {
                 <img src={logo}  width="500" height="300" />
                
                 <div id="divBusca" >
-                    <input type="text" id="txtBusca" placeholder="Buscar..."/>
+                    <input type="text" id="txtBusca" placeholder="Buscar..."
+                    onChange={(e) => this.getSearch(e.target.value)} />
                     <img src={search} id="btnBusca" alt="Buscar"  width="20" height="20" />
                 </div>
 
