@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './chuck-norris-api.png';
 
 export class ChuckNorris extends React.Component {
 
@@ -41,7 +42,7 @@ export class ChuckNorris extends React.Component {
     
         return (
             <div className="card text-center m-3">
-                <h5 className="card-header">Simple GET Request</h5>
+                <img src={logo}  width="500" height="300" />
                 <div className="card-body">
                     Data: {this.state.data.url}
                 </div>
