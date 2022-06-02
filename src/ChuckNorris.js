@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from './chuck-norris-api.png';
+import search from './search.png';
+import './App.css';
 
 export class ChuckNorris extends React.Component {
 
@@ -43,9 +45,16 @@ export class ChuckNorris extends React.Component {
         return (
             <div className="card text-center m-3">
                 <img src={logo}  width="500" height="300" />
+               
+                <div id="divBusca" >
+                    <input type="text" id="txtBusca" placeholder="Buscar..."/>
+                    <img src={search} id="btnBusca" alt="Buscar"  width="20" height="20" />
+                </div>
+
                 <div className="card-body">
                     Data: {this.state.data.url}
                 </div>
+
             </div>
         );
     }
