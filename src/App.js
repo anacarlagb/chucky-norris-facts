@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-              <h3 className="p-3 text-center">ChuckNorris API</h3>
+              <h3 className="p-3 text-center"></h3>
               <ChuckNorris />
           </div>
       </header>

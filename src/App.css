@@ -51,6 +51,10 @@
   width:600px;
 }
 
+#center-col {
+  height: 300px;
+  overflow-y: scroll;
+}
 
 @keyframes App-logo-spin {
   from {
