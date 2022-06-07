@@ -94,7 +94,7 @@ export class ChuckNorris extends React.Component {
           
                     </div>
                 <div className="flex" style={{ top: "20%", left: "50%", position: "fixed" }}>
-                    <button class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                    <button class="px-8 py-2 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
                         onClick={this.callAleat}>
                         Busca Aleatória
                     </button>
@@ -103,7 +103,7 @@ export class ChuckNorris extends React.Component {
                 <div className=" max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800" style={{top: "30%", left: "10%", position: "fixed" }}>
                     <div className="flex items-center justify-between">
                         <span className="text-sm font-light text-gray-600 dark:text-gray-400">Mar 10, 2019</span>
-                        <a className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500">{this.state.category}</a>
+                        <a class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500">Categoria</a>
                         </div>
 
                         <div className="mt-2">
