@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../chuck-norris-api.png';
 import search from '../search.png';
 import '../App.css';
+import { format, parseISO } from "date-fns";
 
 
 
@@ -12,6 +13,7 @@ export class ChuckNorris extends React.Component {
     state = {
         category: "", 
         aleat: "",
+        date: null,
         data: {
             created_at: "",
             categories: [],
@@ -31,6 +33,7 @@ export class ChuckNorris extends React.Component {
         this.setCategory = this.setCategory.bind(this);
         this.setAleat = this.setAleat.bind(this);
         this.callAleat = this.callAleat.bind(this);
+        this.getDate = this.getDate.bind(this);
 
     }
 
@@ -46,6 +49,12 @@ export class ChuckNorris extends React.Component {
         });
     }
 
+    getDate(value){
+       
+        let dateTemp = new Date(value);
+        this.state.date = dateTemp.toLocaleDateString();
+    }
+
     async getSearch(value) {
         // Simple GET request using fetch
        const searchValue  = value; 
@@ -57,6 +66,7 @@ export class ChuckNorris extends React.Component {
        }
        else{
           this.setCategory(data.value);
+          this.getData(data);
        }
     }
 
@@ -65,13 +75,16 @@ export class ChuckNorris extends React.Component {
        const response = await fetch("https://api.chucknorris.io/jokes/random");
        const data = await response.json();
        this.setCategory(data.value);
+       this.getData(data);
     }
 
     getData(dataAPI) {
-    //    let data = dataAPI;
+    
         this.setState({
              data: dataAPI
         });
+
+        this.getDate(dataAPI.created_at);
     }
 
     callAleat() {
@@ -102,7 +115,7 @@ export class ChuckNorris extends React.Component {
               
                 <div className=" max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800" style={{top: "30%", left: "10%", position: "fixed" }}>
                     <div className="flex items-center justify-between">
-                        <span className="text-sm font-light text-gray-600 dark:text-gray-400">Mar 10, 2019</span>
+                        <span className="text-sm font-light text-gray-600 dark:text-gray-400"><b>{this.state.date}</b></span>
                         <a class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500">Categoria</a>
                         </div>
 
