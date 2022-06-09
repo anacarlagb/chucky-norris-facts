@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/chucky-norris-facts/static/css/main.afbf13fe.css",
+    "main.js": "/chucky-norris-facts/static/js/main.5a518c6a.js",
+    "static/js/787.e24fe1f7.chunk.js": "/chucky-norris-facts/static/js/787.e24fe1f7.chunk.js",
+    "static/media/search.png": "/chucky-norris-facts/static/media/search.f4998ffb1525595db20d.png",
+    "static/media/chuck-norris-api.png": "/chucky-norris-facts/static/media/chuck-norris-api.8cef148e44782b060a5c.png",
+    "index.html": "/chucky-norris-facts/index.html",
+    "main.afbf13fe.css.map": "/chucky-norris-facts/static/css/main.afbf13fe.css.map",
+    "main.5a518c6a.js.map": "/chucky-norris-facts/static/js/main.5a518c6a.js.map",
+    "787.e24fe1f7.chunk.js.map": "/chucky-norris-facts/static/js/787.e24fe1f7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afbf13fe.css",
+    "static/js/main.5a518c6a.js"
+  ]
+}
