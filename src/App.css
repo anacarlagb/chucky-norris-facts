@@ -40,6 +40,14 @@
   text-align: center;
 }
 
+#divName{
+  background-color:#444348;
+  border:solid 1px;
+  border-radius:15px;
+  width:400px;
+  text-align: center;
+}
+
 #txtBusca{
   float:left;
   background-color:transparent;
