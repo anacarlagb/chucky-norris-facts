@@ -37,7 +37,7 @@ export class ChuckNorris extends React.Component {
         value: "", 
         aleat: "",
         date: null,
-        category: "Categoria",
+        category: "CATEGORIA",
         greetingMessage:'',
         sayHelloMessage:'',
         userName:'',
@@ -62,7 +62,7 @@ export class ChuckNorris extends React.Component {
         this.callAleat = this.callAleat.bind(this);
         this.getDate = this.getDate.bind(this);
         this.updateName =  this.updateName.bind(this);
-        this.showSayHelloMessage =  this.showSayHelloMessage.bind(this);
+        this.discoverCategory =  this.discoverCategory.bind(this);
         this.showGreeting =  this.showGreeting.bind(this);
 
     }
@@ -89,10 +89,28 @@ export class ChuckNorris extends React.Component {
         loadGreeting().then(g => this.setState({greetingMessage:g+" :-)"}))
      }
      
-     showSayHelloMessage() {
+     async discoverCategory() {
         const name = this.state.userName;
-        console.log(name)
-        loadSayhello(name).then(m => this.setState({sayHelloMessage:m}))
+
+        const response = await fetch("https://api.chucknorris.io/jokes/categories");
+        const data = await response.json();
+        
+        for(let item in data){
+            let category = data[item];
+            if(this.state.category != null && category[0] == name[0].toLowerCase()){
+                this.state.category = category; 
+            }
+        }
+        if(this.state.category == null){
+            this.getAleat()
+            if(this.state.data.categories[0] != null){
+                this.state.category = this.state.data.categories[0];
+            }
+            else{
+                this.state.category = "Você não tem categoria ;)";
+            }
+           
+        }
      }
      
      updateName(event) {
@@ -129,8 +147,8 @@ export class ChuckNorris extends React.Component {
         this.getDate(dataAPI.created_at);
         this.setValue(dataAPI.value);
 
-        if(dataAPI.categories[0] != ''){
-            this.state.category = dataAPI.categories[0];
+        if(dataAPI.categories[0] != null){
+            this.state.category = dataAPI.categories[0].toUpperCase();
         }
 
 
@@ -185,19 +203,22 @@ export class ChuckNorris extends React.Component {
                             </div>
                         </section>
                     </div>
-                    <div style={{top: "70%", left: "65%", position: "fixed" }}>
-                       Saudações mero mortal
-                        <section>
-                            <input id = "divName" type = "text"  onChange = {this.updateName}
-                            value = {this.state.userName}/>
-                            <button id = "btnSayhello" className="px-8 py-2 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
-                            onClick = {this.showSayHelloMessage}> Teste </button>
-                            <br/>
-                            Seu nome é: {this.state.userName}    <br/>
-                            <div id = "SayhelloDiv">
-                                <h1>{this.state.sayHelloMessage}</h1>
-                            </div>
-                        </section>
+                    <div style={{top: "60%", left: "60%", position: "fixed" }}>
+                       Digite qualquer palavra e descubra sua categoria preferida*. 
+                      <div> <font size="3">  *Depois de digitar a palavra, aperte o botão Descobrir e apague a palavra </font> 
+                      </div>
+                      <div style={{top: "80%", left: "62%", position: "fixed" }}>
+                            <section>
+                                <input id = "divCategory" type = "text"  onChange = {this.updateName}
+                                value = {this.state.userName}/>
+                                <button id = "btnSayhello" style={{top: "80%", left: "86%", position: "fixed" }}
+                                className="px-8 py-2 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
+                                onClick = {this.discoverCategory}> Descobrir </button>
+                                <div> Sua categoria é: {this.state.category.toUpperCase()}   </div>
+                                <br/>
+                                <br/>    
+                            </section>
+                        </div>
                     </div>
                 </div>
 
