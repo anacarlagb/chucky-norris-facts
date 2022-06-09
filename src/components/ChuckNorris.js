@@ -205,7 +205,7 @@ export class ChuckNorris extends React.Component {
                     </div>
                     <div style={{top: "60%", left: "60%", position: "fixed" }}>
                        Digite qualquer palavra e descubra sua categoria preferida*. 
-                      <div> <font size="3">  *Depois de digitar a palavra, aperte o botão Descobrir e apague a palavra </font> 
+                      <div> <font size="3">  *Depois de digitar a palavra, aperte o botão "Descobrir" e apague a palavra </font> 
                       </div>
                       <div style={{top: "80%", left: "62%", position: "fixed" }}>
                             <section>
